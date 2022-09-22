@@ -26,5 +26,5 @@ placement:
         numInstances: 2
         imageUri: projects/%%PROJECT_ID%%/global/images/%%IMAGE_NAME%%
       initializationActions:
-        - executableFile: gs://%%GCS_BUCKET_NAME%%/scripts/init.sh
+        - executableFile: gs://%%GCS_BUCKET_NAME%%/scripts/initialize.sh
           executionTimeout: '3600s'
