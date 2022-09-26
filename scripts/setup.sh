@@ -42,6 +42,10 @@ echo "{
 gcloud resource-manager org-policies set-policy external_ip_policy.json --project=$PROJECT_ID
 
 echo "===================================================="
+echo " Waiting 45 seconds for changes to propogate ..."
+sleep 45
+
+echo "===================================================="
 echo " Updating dataproc workflow template ..."
 
 sed -i "s|%%PROJECT_ID%%|$PROJECT_ID|g" templates/pyspark-workflow-template.yaml
