@@ -42,8 +42,8 @@ echo "{
 gcloud resource-manager org-policies set-policy external_ip_policy.json --project=$PROJECT_ID
 
 echo "===================================================="
-echo " Waiting 45 seconds for changes to propogate ..."
-sleep 45
+echo " Waiting 2 minutes for changes to propogate ..."
+sleep 120
 
 echo "===================================================="
 echo " Updating dataproc workflow template ..."
