@@ -74,7 +74,7 @@ echo "===================================================="
 echo " Creating Workflow Template and instantiating ..."
 
 gcloud dataproc workflow-templates instantiate-from-file \
-  --file templates/pyspark-workflow-template.yaml \
+  --file ../templates/pyspark-workflow-template.yaml \
   --region $REGION
 
 echo "===================================================="

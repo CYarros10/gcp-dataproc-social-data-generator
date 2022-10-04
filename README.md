@@ -16,13 +16,15 @@
 
 Use [Dataproc Custom Images]() to pre-install software and python libraries to be utilized by [Cloud Dataproc](). When used in conjunction with [Dataproc Workflow Templates](), you can automate the entire process of Dataproc ephemeral cluster creation and pyspark job submit.
 
+This repository contains code that allows you to create a custom image and instantiate a dataproc workflow based on that image, all in one script.  With Custom Images and Initialization Actions, you can properly build your dataproc cluster machines to fit your workload's needs. With Dataproc Workflow Templates, you can automate the creation of an ephemeral cluster that spins up, executes a job, and deletes.  This provides cost-savings vs. a static long-running cluster. 
+
 ----
 
 ## use-case
 
-This repository contains code that allows you to create a custom image and instantiate a dataproc workflow based on that image, all in one script.  With Custom Images and Initialization Actions, you can properly build your dataproc cluster machines to fit your workload's needs. With Dataproc Workflow Templates, you can automate the creation of an ephemeral cluster that spins up, executes a job, and deletes.  This provides cost-savings vs. a static long-running cluster. 
+Create many small files and upload to Google Cloud Storage.  These numerous small files can be used to demonstrate how file size can affect performance of Hive/HBase/Spark on Dataproc.
 
- **The use-case of this repository is purely for learning purposes.** 
+**The use-case of this repository is purely for learning purposes.** 
 
 The newly created Dataproc Custom Image will contain software required for a python script to execute successfully. The Dataproc Workflow Template creates an ephemeral cluster that has initialization actions script that will download a large file containing an archive of reddit comments. Finally, once the large archive file is downloaded, the pyspark job is submitted to the cluster and processes the large file, uploading 250kb files to a specified Google Cloud Storage location.
 

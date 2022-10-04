@@ -147,22 +147,25 @@ with open(source_compressed_file, 'rb') as fh:
                 chunk = reader.read(2**19)  # 500kb chunks
                 if not chunk:
                     break
-                string_data = chunk.decode('utf-8')
-                lines = string_data.split("\n")
-                for i, line in enumerate(lines[:-1]):
-                    if i == 0:
-                        line = previous_line + line
-                    object = json.loads(line)
-                    # modify object here to fit other schema
-                    formatted_object = modify(object)
-                    comment_modified_count +=1
-                    if (comment_modified_count % 1000 == 0):
-                        print("comments modified = "+str(comment_modified_count))
-                    final_data = json.dumps(formatted_object)
-                    if final_data != 'null':
-                        f.write(json.dumps(formatted_object)+"\n")
-                previous_line = lines[-1]
-                chunk_count += 1
+                try:
+                    string_data = chunk.decode('utf-8')
+                    lines = string_data.split("\n")
+                    for i, line in enumerate(lines[:-1]):
+                        if i == 0:
+                            line = previous_line + line
+                        object = json.loads(line)
+                        # modify object here to fit other schema
+                        formatted_object = modify(object)
+                        comment_modified_count +=1
+                        if (comment_modified_count % 1000 == 0):
+                            print("comments modified = "+str(comment_modified_count))
+                        final_data = json.dumps(formatted_object)
+                        if final_data != 'null':
+                            f.write(json.dumps(formatted_object)+"\n")
+                    previous_line = lines[-1]
+                    chunk_count += 1
+                except:
+                    print("couldn't read data. moving on...")
             f.close()
             upload_blob(destination_bucket, "/files"+fname, "historical_comments_new"+fname)
             os.remove("/files"+fname)
