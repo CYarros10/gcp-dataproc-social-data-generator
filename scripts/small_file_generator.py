@@ -144,7 +144,7 @@ with open(source_compressed_file, 'rb') as fh:
             f = open("/files"+fname, "a")
             chunk_count = 0
             while chunk_count < 1: # chunk_count * chunk = file_size
-                chunk = reader.read(2**19)  # 500kb chunks
+                chunk = reader.read(2**14)  # 16kb chunks
                 if not chunk:
                     break
                 try:
@@ -166,6 +166,7 @@ with open(source_compressed_file, 'rb') as fh:
                     chunk_count += 1
                 except:
                     print("couldn't read data. moving on...")
+                    break
             f.close()
             upload_blob(destination_bucket, "/files"+fname, "historical_comments_new"+fname)
             os.remove("/files"+fname)
