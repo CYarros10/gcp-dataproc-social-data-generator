@@ -168,6 +168,6 @@ with open(source_compressed_file, 'rb') as fh:
                     print("couldn't read data. moving on...")
                     break
             f.close()
-            upload_blob(destination_bucket, "/files"+fname, "historical_comments_new"+fname)
+            upload_blob(destination_bucket, "/files"+fname, "comments"+fname)
             os.remove("/files"+fname)
             file_count += 1
