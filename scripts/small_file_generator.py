@@ -165,7 +165,7 @@ with open(source_compressed_file, 'rb') as fh:
                     previous_line = lines[-1]
                     chunk_count += 1
                 except Exception as e:
-                    print(str(e.message))
+                    print(str(e))
                     print("couldn't read data. moving on...")
                     break
             f.close()
