@@ -144,7 +144,7 @@ with open(source_compressed_file, 'rb') as fh:
             f = open("/files"+fname, "a")
             chunk_count = 0
             while chunk_count < 1: # chunk_count * chunk = file_size
-                chunk = reader.read(2**14)  # 16kb chunks
+                chunk = reader.read(2**15)  # 16kb chunks
                 if not chunk:
                     break
                 try:
