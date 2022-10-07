@@ -164,7 +164,8 @@ with open(source_compressed_file, 'rb') as fh:
                             f.write(json.dumps(formatted_object)+"\n")
                     previous_line = lines[-1]
                     chunk_count += 1
-                except:
+                except Exception as e:
+                    print(str(e.message))
                     print("couldn't read data. moving on...")
                     break
             f.close()
