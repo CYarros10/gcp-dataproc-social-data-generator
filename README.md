@@ -1,5 +1,4 @@
-# gcp-dataproc-workflow-template-custom-image-sample
-
+# gcp-dataproc-social-data-generator
 ----
 
 ## Table Of Contents
