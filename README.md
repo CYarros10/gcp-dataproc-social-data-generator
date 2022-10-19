@@ -22,11 +22,11 @@ This repository contains code that allows you to create a custom image and insta
 
 ## use-case
 
-Create many small files and upload to Google Cloud Storage.  These numerous small files can be used to demonstrate how file size can affect performance of Hive/HBase/Spark on Dataproc.
+Create social data files of a specified size and upload to Google Cloud Storage.  
 
 **The use-case of this repository is purely for learning purposes.** 
 
-The newly created Dataproc Custom Image will contain software required for a python script to execute successfully. The Dataproc Workflow Template creates an ephemeral cluster that has initialization actions script that will download a large file containing an archive of reddit comments. Finally, once the large archive file is downloaded, the pyspark job is submitted to the cluster and processes the large file, uploading 250kb files to a specified [Google Cloud Storage](https://cloud.google.com/storage) location.
+The newly created Dataproc Custom Image will contain software required for a python script to execute successfully. The Dataproc Workflow Template creates an ephemeral cluster that has initialization actions script that will download a large file containing an archive of reddit comments. Finally, once the large archive file is downloaded, the pyspark job is submitted to the cluster and processes the large file, uploading files to a specified [Google Cloud Storage](https://cloud.google.com/storage) location.
 
 Things you'll learn about:
 

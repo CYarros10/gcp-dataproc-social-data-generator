@@ -5,9 +5,9 @@ jobs:
     args:
     - /RC_2022-06.zst
     - %%GCS_BUCKET_NAME%%
-    - "1"
-    mainPythonFileUri: gs://%%PROJECT_ID%%-services/scripts/small_file_generator.py
-  stepId: small-file-generator
+    - "16384"
+    mainPythonFileUri: gs://%%PROJECT_ID%%-services/scripts/social_data_generator.py
+  stepId: social-data-generator
 placement:
   managedCluster:
     clusterName: %%CLUSTER_NAME%%

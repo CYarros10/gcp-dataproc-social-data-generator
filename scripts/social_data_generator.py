@@ -14,6 +14,7 @@ from google.cloud import storage
 
 source_compressed_file = sys.argv[1]
 destination_bucket = sys.argv[2]
+file_size_bytes = sys.argv[3]
 
 bot_list = ['AutoModerator', 'keepthetips', 'MAGIC_EYE_BOT',
             'Funny_Sentinel', 'Funny-Mod', 'Showerthoughts_Mod', 'autotldr',
@@ -144,7 +145,7 @@ with open(source_compressed_file, 'rb') as fh:
             f = open("/files"+fname, "a")
             chunk_count = 0
             while chunk_count < 1: # chunk_count * chunk = file_size
-                chunk = reader.read(2**15)  # 16kb chunks
+                chunk = reader.read(int(file_size_bytes)*2)
                 if not chunk:
                     break
                 try:
@@ -164,11 +165,10 @@ with open(source_compressed_file, 'rb') as fh:
                             f.write(json.dumps(formatted_object)+"\n")
                     previous_line = lines[-1]
                     chunk_count += 1
-                except Exception as e:
-                    print(str(e))
+                except:
                     print("couldn't read data. moving on...")
                     break
             f.close()
-            upload_blob(destination_bucket, "/files"+fname, "comments"+fname)
+            upload_blob(destination_bucket, "/files"+fname, "historical_comments_new"+fname)
             os.remove("/files"+fname)
             file_count += 1
